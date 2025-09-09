@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratham - Photographer & Videographer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Custom styles for the page */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E1E0DC; /* Light background for content */
+            color: #111827;
+            overflow-x: hidden; /* Prevent horizontal scroll from carousel */
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+
+        /* Blinking cursor effect for the typing animation */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* --- Photography Carousel Styles --- */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                /* (Image Width + Horizontal Margin) * Number of Images */
+                transform: translateX(calc(-382px * 7)); 
+            }
+        }
+
+        .carousel-track {
+            animation: scroll 60s linear infinite reverse; /* Slower speed, reversed */
+            display: flex;
+            /* (Image Width + Horizontal Margin) * Number of Images * 2 (for seamless loop) */
+            width: calc(382px * 14); 
+        }
+        
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .carousel-container {
+            scroll-behavior: smooth; /* For smooth button clicks */
+        }
+
+        /* --- HIDE SCROLLBAR --- */
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .carousel-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* --- Instagram Embed Style --- */
+        .instagram-embed-container blockquote {
+            margin: 0 !important; /* Override default blockquote margins */
+            border-radius: 0.5rem; /* 8px */
+            overflow: hidden;
+        }
+
+        /* --- Gradient Border for CTA --- */
+        .gradient-border {
+            border: 2px solid transparent;
+            background: 
+                linear-gradient(to right, #E1E0DC, #E1E0DC), 
+                linear-gradient(to right, #a855f7, #06b6d4); /* UPDATED COLOR */
+            background-clip: padding-box, border-box;
+            background-origin: padding-box, border-box;
+        }
+
+        /* --- Logo Marquee Styles --- */
+        @keyframes scroll-logos {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        .logo-track {
+            animation: scroll-logos 60s linear infinite;
+            display: flex;
+            width: calc(214px * 24); /* (Logo Width 150px + Margin 64px) * 12 logos * 2 sets */
+        }
+
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="relative w-full">
+
+        <!-- Hero Section with Video BG -->
+        <div class="relative w-full hero-section">
+            <!-- Background Video -->
+            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+                <source src="bd-vid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Dark Overlay -->
+            <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
+            <!-- Header/Navigation -->
+            <header class="fixed top-0 left-0 w-full p-4 md:p-6 z-30">
+                <div class="container mx-auto">
+                    <div class="max-w-5xl mx-auto bg-black/30 backdrop-blur-lg rounded-full flex justify-between items-center p-2 shadow-lg border border-white/10">
+                        <a href="#" class="flex items-center space-x-3 ml-2">
+                            <div class="w-12 h-12 bg-gray-800/80 rounded-full flex items-center justify-center border-2 border-cyan-400/50">
+                                <span class="font-bold text-lg text-cyan-400">P</span>
+                            </div>
+                            <span class="text-xl font-semibold text-white hidden lg:block">Pratham</span>
+                        </a>
+                        <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">Home</a>
+                            <a href="#portfolio" class="text-white hover:text-gray-200 transition-colors duration-300">Portfolio</a>
+                            <a href="#services" class="text-white hover:text-gray-200 transition-colors duration-300">Services</a>
+                            <a href="#about" class="text-white hover:text-gray-200 transition-colors duration-300">About</a>
+                            <a href="#contact" class="text-white hover:text-gray-200 transition-colors duration-300">Contact</a>
+                        </nav>
+                        <a href="#contact" class="hidden md:inline-block px-6 py-3 text-white font-semibold rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 shadow-md mr-2">
+                            Get in Touch
+                        </a>
+                        <div class="md:hidden flex items-center">
+                            <button class="text-white focus:outline-none mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Hero Section Content -->
+            <main class="relative h-full flex flex-col items-center justify-center text-center p-4 z-20">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4">
+                    I'm Pratham
+                </h1>
+                <p class="text-2xl md:text-3xl mb-8">
+                    <span id="typing-effect" class="typing-cursor font-medium bg-gradient-to-r from-purple-600 to-cyan-500 text-transparent bg-clip-text"></span>
+                </p>
+                <p class="max-w-2xl text-lg text-gray-300 mb-10">
+                    I capture moments that tell your story through the lens. With a passion for visual storytelling, I create compelling imagery and videos that resonate with your audience.
+                </p>
+                <a href="#contact" class="px-8 py-4 text-white font-bold rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                    Get in Touch
+                </a>
+            </main>
+        </div>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="h-[90vh] flex flex-col py-12">
+            <div class="container mx-auto px-4 text-center flex-shrink-0">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    My <span class="text-purple-600">Portfolio</span>
+                </h2>
+                <p class="max-w-3xl mx-auto text-gray-600 md:text-lg mb-8">
+                    A curated collection of my finest work, showcasing the artistry and emotion captured in every frame and every story told.
+                </p>
+
+                <!-- Toggle Buttons -->
+                <div class="flex justify-center mb-8">
+                     <div class="p-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full">
+                        <div class="relative flex items-center bg-white rounded-full p-1">
+                            <button id="photo-btn" class="relative z-10 w-36 py-2 px-4 text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full shadow-md transition-colors duration-300">
+                                <i class="fas fa-camera mr-2"></i>Photography
+                            </button>
+                            <button id="video-btn" class="relative z-10 w-36 py-2 px-4 text-sm font-semibold text-gray-600 rounded-full transition-colors duration-300">
+                               <i class="fas fa-video mr-2"></i>Videography
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galleries Container -->
+            <div class="flex-grow w-full relative">
+                <!-- Photography Carousel -->
+                <div id="photo-gallery" class="carousel-container relative w-full h-full overflow-x-scroll overflow-y-hidden">
+                    <div class="carousel-track absolute top-0 left-0 h-full flex items-center">
+                        <!-- Image Set -->
+                        <img src="pic1.jpg" alt="Portfolio Image 1" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic2.jpg" alt="Portfolio Image 2" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic3.jpg" alt="Portfolio Image 3" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic1.jpg" alt="Portfolio Image 4" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic5.jpg" alt="Portfolio Image 5" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic6.jpg" alt="Portfolio Image 6" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic3.jpg" alt="Portfolio Image 7" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <!-- Duplicate Set -->
+                        <img src="pic1.jpg" alt="Portfolio Image 1" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic2.jpg" alt="Portfolio Image 2" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic3.jpg" alt="Portfolio Image 3" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic1.jpg" alt="Portfolio Image 4" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic5.jpg" alt="Portfolio Image 5" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic6.jpg" alt="Portfolio Image 6" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                        <img src="pic3.jpg" alt="Portfolio Image 7" class="h-auto w-[350px] object-cover rounded-lg shadow-lg mx-4 transition-transform duration-300 hover:scale-110 hover:z-20 cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/50 hover:bg-white transition-colors rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-chevron-left text-gray-800"></i>
+                </button>
+                <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/50 hover:bg-white transition-colors rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-chevron-right text-gray-800"></i>
+                </button>
+
+                <!-- Videography Gallery -->
+                <div id="video-gallery" class="hidden container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Reel Placeholders... -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-12">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-serif">
+                    My <span class="text-purple-600">Services</span>
+                </h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                    Professional visual storytelling solutions
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 text-left">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border-4 border-purple-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <i class="fas fa-ring fa-2x text-purple-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Wedding Photography</h3>
+                        <p class="text-gray-600 text-sm mb-4">Capturing the magic of your special day with timeless, beautiful imagery.</p>
+                        <a href="wedding.html" class="text-sm font-semibold text-purple-600 hover:underline">Get More Details</a>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border-4 border-cyan-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <i class="fas fa-film fa-2x text-cyan-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Commercial Videography</h3>
+                        <p class="text-gray-600 text-sm mb-4">Creating compelling video content that elevates your brand and tells your story.</p>
+                         <a href="#" class="text-sm font-semibold text-cyan-600 hover:underline">Get More Details</a>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border-4 border-blue-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <i class="fas fa-portrait fa-2x text-blue-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Portrait Sessions</h3>
+                        <p class="text-gray-600 text-sm mb-4">Personalized photoshoots to capture your unique personality and style.</p>
+                         <a href="#" class="text-sm font-semibold text-blue-600 hover:underline">Get More Details</a>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border-4 border-emerald-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <i class="fas fa-building fa-2x text-emerald-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Real Estate</h3>
+                        <p class="text-gray-600 text-sm mb-4">High-quality photos and videos to showcase properties in the best light.</p>
+                         <a href="#" class="text-sm font-semibold text-emerald-600 hover:underline">Get More Details</a>
+                    </div>
+                    <!-- Service Card 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border-4 border-amber-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <i class="fas fa-calendar-check fa-2x text-amber-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Event Coverage</h3>
+                        <p class="text-gray-600 text-sm mb-4">Documenting your corporate events, parties, and conferences professionally.</p>
+                         <a href="#" class="text-sm font-semibold text-amber-600 hover:underline">Get More Details</a>
+                    </div>
+                </div>
+                <!-- Call to Action Section -->
+                <div class="mt-12">
+                    <div class="max-w-5xl mx-auto py-6 px-8 rounded-3xl text-center gradient-border">
+                        <h3 class="text-3xl font-bold mb-4 font-serif">
+                            Ready to Create Something <span class="text-purple-600">Amazing?</span>
+                        </h3>
+                        <p class="text-gray-700 max-w-2xl mx-auto mb-6">
+                            Let's discuss your vision and create stunning visuals that tell your unique story. Every project is a collaboration, and I'm excited to bring your ideas to life.
+                        </p>
+                        <a href="#contact" class="inline-block px-8 py-3 text-white font-bold rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left Column: Text Content -->
+                    <div class="text-gray-700">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 font-serif">
+                            About <span class="text-purple-600">Pratham</span>
+                        </h2>
+                        <p class="mb-4 text-lg">
+                            With over <strong>8 years of experience</strong> in visual storytelling, I've dedicated my career to capturing the essence of life's most precious moments through the lens of artistry and emotion.
+                        </p>
+                        <p class="mb-4">
+                            My journey began with a simple belief: every story deserves to be told beautifully. Whether it’s the intimate glance between newlyweds, the energy of a corporate event, or the authentic moments that define a brand, I approach each project with the same passion and attention to detail.
+                        </p>
+                        <p>
+                            Based in New York but available worldwide, I specialize in luxury wedding photography and commercial videography. My style blends <strong>cinematic techniques with authentic storytelling</strong>, creating visual narratives that resonate long after the moment has passed.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Stats Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Card 1: Projects Completed -->
+                        <div class="p-6 rounded-2xl text-center gradient-border">
+                            <div class="bg-purple-100 text-purple-600 rounded-full w-16 h-16 inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-camera-retro fa-2x"></i>
+                            </div>
+                            <p class="text-5xl font-bold counter" data-target="500">0+</p>
+                            <p class="text-gray-600">Projects Completed</p>
+                        </div>
+                        <!-- Card 2: Happy Clients -->
+                         <div class="p-6 rounded-2xl text-center gradient-border">
+                            <div class="bg-purple-100 text-purple-600 rounded-full w-16 h-16 inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-users fa-2x"></i>
+                            </div>
+                            <p class="text-5xl font-bold counter" data-target="200">0+</p>
+                            <p class="text-gray-600">Happy Clients</p>
+                        </div>
+                        <!-- Card 3: Years Experience -->
+                         <div class="p-6 rounded-2xl text-center gradient-border">
+                            <div class="bg-purple-100 text-purple-600 rounded-full w-16 h-16 inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-medal fa-2x"></i>
+                            </div>
+                            <p class="text-5xl font-bold counter" data-target="8">0+</p>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                        <!-- Card 4: Client Satisfaction -->
+                         <div class="p-6 rounded-2xl text-center gradient-border">
+                            <div class="bg-purple-100 text-purple-600 rounded-full w-16 h-16 inline-flex items-center justify-center mb-4">
+                                <i class="fas fa-heart fa-2x"></i>
+                            </div>
+                            <p class="text-5xl font-bold counter" data-target="98">0%</p>
+                            <p class="text-gray-600">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quote Section -->
+                <blockquote class="mt-16 max-w-3xl mx-auto text-center border-y-4 border-purple-200/50 py-6">
+                    <p class="text-xl italic text-gray-800 font-serif">
+                        "Photography is not just about capturing what you see, but about revealing what others feel. Every frame tells a story, and every story deserves to be told with <span class="bg-gradient-to-r from-purple-600 to-cyan-500 text-transparent bg-clip-text font-bold">passion and artistry</span>."
+                    </p>
+                    <footer class="mt-4 font-semibold text-gray-700">
+                        - Pratham
+                    </footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- We Have Worked With Section -->
+        <section id="clients" class="py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 font-serif">
+                    We Have <span class="text-purple-600">Worked With</span>
+                </h2>
+                <div class="relative w-full overflow-hidden">
+                    <div class="logo-track flex items-center">
+                        <!-- Logos - Set 1 -->
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+1" alt="Client Logo 1" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+2" alt="Client Logo 2" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+3" alt="Client Logo 3" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+4" alt="Client Logo 4" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+5" alt="Client Logo 5" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+6" alt="Client Logo 6" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+7" alt="Client Logo 7" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+8" alt="Client Logo 8" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+9" alt="Client Logo 9" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+10" alt="Client Logo 10" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+11" alt="Client Logo 11" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+12" alt="Client Logo 12" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <!-- Logos - Set 2 (for seamless loop) -->
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+1" alt="Client Logo 1" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+2" alt="Client Logo 2" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+3" alt="Client Logo 3" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+4" alt="Client Logo 4" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+5" alt="Client Logo 5" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+6" alt="Client Logo 6" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+7" alt="Client Logo 7" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+8" alt="Client Logo 8" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+9" alt="Client Logo 9" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+10" alt="Client Logo 10" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+11" alt="Client Logo 11" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                        <img src="https://placehold.co/150x80/cccccc/ffffff?text=Client+12" alt="Client Logo 12" class="mx-8 h-12 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold font-serif">
+                        Get In <span class="text-purple-600">Touch</span>
+                    </h2>
+                    <p class="text-gray-600 mt-4">Let's create something amazing together</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Left Column: Contact Info -->
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold mb-6">Connect With Me</h3>
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Address</h4>
+                                    <p class="text-gray-600">123 Creative Avenue, Studio City, CA 91604</p>
+                                </div>
+                            </div>
+                            <!-- Phone -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone fa-lg"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope fa-lg"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">hello@prathamvisuals.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="mt-8 flex flex-col gap-4">
+                            <a href="tel:+15551234567" class="inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-full bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 shadow-md">
+                                <i class="fas fa-phone fa-lg mr-3"></i>
+                                Call Me Directly
+                            </a>
+                            <a href="https://wa.me/15551234567" target="_blank" class="inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-full bg-green-500 hover:bg-green-600 transition-colors duration-300 shadow-md">
+                                <i class="fab fa-whatsapp fa-lg mr-3"></i>
+                                Whatsapp Me
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Contact Form -->
+                    <div class="lg:col-span-2">
+                        <form action="#" method="POST" class="space-y-6">
+                            <input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <input type="email" name="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <input type="text" name="subject" placeholder="Subject" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <textarea name="message" rows="6" placeholder="Your Message" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                            <button type="submit" class="w-full px-8 py-4 text-white font-bold rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-300 py-8">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Column 1: About -->
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4 relative after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-12 after:bg-purple-600">Pratham Visuals</h3>
+                        <p class="mt-6 text-gray-400">
+                            Professional videography and photography services to capture your most important moments.
+                        </p>
+                        <div class="flex space-x-4 mt-6">
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-purple-600 rounded-full flex items-center justify-center transition-colors"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-purple-600 rounded-full flex items-center justify-center transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-700 hover:bg-purple-600 rounded-full flex items-center justify-center transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <!-- Column 2: Services -->
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4 relative after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-12 after:bg-purple-600">Services</h3>
+                        <ul class="mt-6 space-y-3 text-gray-400">
+                            <li><a href="#services" class="hover:text-white transition-colors">Wedding Photography</a></li>
+                            <li><a href="#services" class="hover:text-white transition-colors">Commercial Videography</a></li>
+                            <li><a href="#services" class="hover:text-white transition-colors">Portrait Sessions</a></li>
+                            <li><a href="#services" class="hover:text-white transition-colors">Real Estate</a></li>
+                            <li><a href="#services" class="hover:text-white transition-colors">Event Coverage</a></li>
+                        </ul>
+                    </div>
+                    <!-- Column 3: Quick Links -->
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4 relative after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-12 after:bg-purple-600">Quick Links</h3>
+                        <ul class="mt-6 space-y-3 text-gray-400">
+                            <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a></li>
+                            <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                            <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                    &copy; 2024 Pratham Visuals. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Instagram Embeds Script - MUST be at the bottom -->
+    <script async src="//www.instagram.com/embed.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Typing Effect Script ---
+            const typingElement = document.getElementById('typing-effect');
+            const words = ["Photographer", "Videographer"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                if (!isDeleting && charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 2000);
+                    return;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 500);
+                    return;
+                }
+                const typingSpeed = isDeleting ? 100 : 150;
+                setTimeout(type, typingSpeed);
+            }
+            if (typingElement && words.length) setTimeout(type, 500);
+        
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.querySelector('.md\\:hidden button');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    alert('Mobile menu would open here!');
+                });
+            }
+
+            // --- Portfolio Gallery Toggle ---
+            const photoBtn = document.getElementById('photo-btn');
+            const videoBtn = document.getElementById('video-btn');
+            const photoGallery = document.getElementById('photo-gallery');
+            const videoGallery = document.getElementById('video-gallery');
+            
+            if(photoBtn && videoBtn && photoGallery && videoGallery) {
+                photoBtn.addEventListener('click', () => {
+                    photoGallery.style.display = 'block';
+                    videoGallery.style.display = 'none';
+                    
+                    photoBtn.classList.add('text-white', 'bg-gradient-to-r', 'from-purple-600', 'to-cyan-500', 'shadow-md');
+                    photoBtn.classList.remove('text-gray-600');
+                    
+                    videoBtn.classList.add('text-gray-600');
+                    videoBtn.classList.remove('text-white', 'bg-gradient-to-r', 'from-purple-600', 'to-cyan-500', 'shadow-md');
+                });
+
+                videoBtn.addEventListener('click', () => {
+                    videoGallery.style.display = 'grid';
+                    photoGallery.style.display = 'none';
+
+                    videoBtn.classList.add('text-white', 'bg-gradient-to-r', 'from-purple-600', 'to-cyan-500', 'shadow-md');
+                    videoBtn.classList.remove('text-gray-600');
+                    
+                    photoBtn.classList.add('text-gray-600');
+                    photoBtn.classList.remove('text-white', 'bg-gradient-to-r', 'from-purple-600', 'to-cyan-500', 'shadow-md');
+                });
+            }
+
+            // --- Carousel Controls ---
+            const carouselContainer = document.querySelector('.carousel-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (carouselContainer && prevBtn && nextBtn) {
+                const scrollAmount = 382; 
+                prevBtn.addEventListener('click', () => {
+                    carouselContainer.scrollLeft -= scrollAmount;
+                });
+                nextBtn.addEventListener('click', () => {
+                    carouselContainer.scrollLeft += scrollAmount;
+                });
+            }
+
+            // --- Counter Animation on Scroll ---
+            const aboutSection = document.getElementById('about');
+            if(aboutSection) {
+                const counters = document.querySelectorAll('.counter');
+                let hasAnimated = false;
+
+                const animateCount = (el) => {
+                    const target = +el.dataset.target;
+                    const duration = 2000; // 2 seconds
+                    const suffix = el.textContent.replace('0', '');
+                    let current = 0;
+                    const increment = target / (duration / 16);
+
+                    const updateCount = () => {
+                        current += increment;
+                        if (current < target) {
+                            el.textContent = Math.ceil(current) + suffix;
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            el.textContent = target + suffix;
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            counters.forEach(counter => {
+                                animateCount(counter);
+                            });
+                            hasAnimated = true;
+                            observer.unobserve(aboutSection);
+                        }
+                    });
+                }, {
+                    threshold: 0.5 // Start animation when 50% of the section is visible
+                });
+                observer.observe(aboutSection);
+            }
+        });
+    </script>
+
+</body>
+</html>
+
