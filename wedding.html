@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Photography - Pratham Visuals</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Custom styles for the page */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E1E0DC; /* Light background for content */
+            color: #111827;
+            overflow-x: hidden; 
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Carousel Styles */
+        .hero-carousel-slide {
+            transition: opacity 1.5s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="relative w-full">
+
+        <!-- Page Header -->
+        <header class="py-16 text-center">
+            <div class="container mx-auto px-4">
+                 <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">Wedding <span class="text-purple-600">Photography</span></h1>
+            </div>
+        </header>
+
+        <!-- Page Hero Section (UPDATED to Carousel) -->
+        <section id="hero-carousel" class="relative h-[80vh]">
+            <!-- Carousel Slides -->
+            <div class="absolute inset-0">
+                <div class="hero-carousel-slide absolute inset-0 w-full h-full bg-cover bg-center opacity-0" style="background-image: url('w-img1.jpg');"></div>
+                <div class="hero-carousel-slide absolute inset-0 w-full h-full bg-cover bg-center opacity-0" style="background-image: url('w-img2.jpg');"></div>
+                <div class="hero-carousel-slide absolute inset-0 w-full h-full bg-cover bg-center opacity-0" style="background-image: url('w-img3.jpg');"></div>
+                <div class="hero-carousel-slide absolute inset-0 w-full h-full bg-cover bg-center opacity-0" style="background-image: url('w-img4.jpg');"></div>
+                <div class="hero-carousel-slide absolute inset-0 w-full h-full bg-cover bg-center opacity-0" style="background-image: url('w-img5.jpg');"></div>
+                <div class="hero-carousel-slide absolute inset-0 w-full h-full bg-cover bg-center opacity-0" style="background-image: url('w-img6.jpg');"></div>
+            </div>
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative h-full flex flex-col items-center justify-start text-center text-white p-4 pt-20 z-10">
+            </div>
+            <!-- Carousel Controls -->
+            <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white/50 transition-colors rounded-full w-14 h-14 flex items-center justify-center shadow-lg">
+                <i class="fas fa-chevron-left text-white text-xl"></i>
+            </button>
+            <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white/50 transition-colors rounded-full w-14 h-14 flex items-center justify-center shadow-lg">
+                <i class="fas fa-chevron-right text-white text-xl"></i>
+            </button>
+        </section>
+
+        <!-- Service Details Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold font-serif mb-6">Capturing Your <span class="text-purple-600">Forever</span></h2>
+                    <p class="text-gray-700 mb-4">
+                        Your wedding day is a once-in-a-lifetime event, filled with fleeting moments of joy, love, and emotion. My approach is to blend into your day, capturing not just the big events, but the quiet glances, the happy tears, and the heartfelt laughter that truly tell your unique love story.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        From the early morning preparations to the final dance, I am dedicated to documenting every detail with artistry and care. I combine candid photojournalism with fine-art portraiture to create a comprehensive and beautiful gallery that you and your family will cherish for generations.
+                    </p>
+                     <ul class="list-disc list-inside text-gray-700 space-y-2 inline-block text-left">
+                        <li>Full-day coverage options</li>
+                        <li>Engagement sessions</li>
+                        <li>High-resolution digital images</li>
+                        <li>Professionally edited and curated gallery</li>
+                        <li>Custom heirloom albums and prints</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold font-serif mb-12">
+                    Our <span class="text-purple-600">Packages</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Package 1: Silver -->
+                    <div class="border-2 border-purple-200 rounded-lg p-8 text-center flex flex-col hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-2xl font-bold font-serif mb-4">Silver</h3>
+                        <p class="text-5xl font-bold mb-4">$1,800</p>
+                        <p class="text-gray-500 mb-6">Perfect for intimate ceremonies.</p>
+                        <ul class="text-left space-y-3 text-gray-700 flex-grow">
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>4 Hours of Coverage</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>1 Photographer</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>200+ Edited Photos</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>Online Gallery</li>
+                        </ul>
+                        <a href="#contact-wedding" class="mt-8 inline-block px-8 py-3 text-white font-bold rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 shadow-lg">Book Now</a>
+                    </div>
+                    <!-- Package 2: Gold (Most Popular) -->
+                    <div class="border-4 border-purple-600 rounded-lg p-8 text-center flex flex-col relative overflow-hidden shadow-2xl transform scale-105">
+                        <span class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">Most Popular</span>
+                        <h3 class="text-2xl font-bold font-serif mb-4">Gold</h3>
+                        <p class="text-5xl font-bold mb-4">$3,200</p>
+                        <p class="text-gray-500 mb-6">Comprehensive coverage for your day.</p>
+                        <ul class="text-left space-y-3 text-gray-700 flex-grow">
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>8 Hours of Coverage</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>2 Photographers</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>500+ Edited Photos</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>Online Gallery</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>Engagement Session</li>
+                        </ul>
+                        <a href="#contact-wedding" class="mt-8 inline-block px-8 py-3 text-white font-bold rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 shadow-lg">Book Now</a>
+                    </div>
+                    <!-- Package 3: Platinum -->
+                    <div class="border-2 border-purple-200 rounded-lg p-8 text-center flex flex-col hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-2xl font-bold font-serif mb-4">Platinum</h3>
+                        <p class="text-5xl font-bold mb-4">$5,000</p>
+                        <p class="text-gray-500 mb-6">The ultimate all-inclusive experience.</p>
+                        <ul class="text-left space-y-3 text-gray-700 flex-grow">
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>All-Day Coverage (12 Hours)</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>2 Photographers + Assistant</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>800+ Edited Photos</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>Online Gallery & Slideshow</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>Engagement Session</li>
+                            <li><i class="fas fa-check-circle text-purple-600 mr-2"></i>12x12 Heirloom Album</li>
+                        </ul>
+                        <a href="#contact-wedding" class="mt-8 inline-block px-8 py-3 text-white font-bold rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 shadow-lg">Book Now</a>
+                    </div>
+                </div>
+                <!-- Back to Home Button -->
+                <div class="mt-16">
+                    <a href="index.html" class="inline-block px-8 py-4 text-gray-800 font-bold rounded-full bg-white border-2 border-gray-300 hover:bg-gray-100 hover:border-gray-400 transition-all duration-300 shadow-md">
+                        <i class="fas fa-arrow-left mr-3"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (Same as Homepage) -->
+        <section id="contact-wedding" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold font-serif">
+                        Get In <span class="text-purple-600">Touch</span>
+                    </h2>
+                    <p class="text-gray-600 mt-4">Let's create something amazing together</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold mb-6">Connect With Me</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Address</h4>
+                                    <p class="text-gray-600">123 Creative Avenue, Studio City, CA 91604</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone fa-lg"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-cyan-500 text-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope fa-lg"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">hello@prathamvisuals.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex flex-col gap-4">
+                            <a href="tel:+15551234567" class="inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-full bg-cyan-500 hover:bg-cyan-600 transition-colors duration-300 shadow-md">
+                                <i class="fas fa-phone fa-lg mr-3"></i>
+                                Call Me Directly
+                            </a>
+                            <a href="https://wa.me/15551234567" target="_blank" class="inline-flex items-center justify-center px-6 py-3 text-white font-semibold rounded-full bg-green-500 hover:bg-green-600 transition-colors duration-300 shadow-md">
+                                <i class="fab fa-whatsapp fa-lg mr-3"></i>
+                                Whatsapp Me
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <form action="#" method="POST" class="space-y-6">
+                            <input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <input type="email" name="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <input type="text" name="subject" placeholder="Subject" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <textarea name="message" rows="6" placeholder="Your Message" class="w-full p-4 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                            <button type="submit" class="w-full px-8 py-4 text-white font-bold rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Hero Carousel Script ---
+            const carousel = document.getElementById('hero-carousel');
+            const slides = document.querySelectorAll('.hero-carousel-slide');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startSlider() {
+                clearInterval(slideInterval); // Clear existing interval
+                slideInterval = setInterval(nextSlide, 5000); // Autoplay every 5 seconds
+            }
+
+            if (slides.length > 0) {
+                showSlide(currentSlide);
+                startSlider();
+
+                // Pause on hover
+                carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                carousel.addEventListener('mouseleave', startSlider);
+                
+                // Manual controls
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
